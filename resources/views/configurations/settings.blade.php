@@ -8,9 +8,9 @@
     @csrf
     <div class="form-check">
       @if ($maintenanceActive)
-        <input class="form-check-input" type="checkbox" checked="checked" id="maintenance">
+        <input class="form-check-input" type="checkbox" checked name="maintenance" id="maintenance">
       @else
-        <input class="form-check-input" type="checkbox" value="" id="maintenance">
+        <input class="form-check-input" type="checkbox" name="maintenance" id="maintenance">
       @endif
       <label class="form-check-label" for="maintenance">
         Maintenance Mode

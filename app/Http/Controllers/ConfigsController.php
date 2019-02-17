@@ -26,12 +26,15 @@ class ConfigsController extends Controller
     }
 
     public function toggle(Request $request){
-      $input = $request->all();
-      DB::table("configurations")
-        ->where("name", "maintenance")
-        ->update([
-        "value"=>"off"
-      ]);
+      if ($request->maintenance == "on"){
+        DB::table("configurations")
+          ->where("name", "maintenance")
+          ->update(["value"=>"on"]);
+      } else {
+        DB::table("configurations")
+          ->where("name", "maintenance")
+          ->update(["value"=>"off"]);
+      }
 
       return redirect("/");
     }
