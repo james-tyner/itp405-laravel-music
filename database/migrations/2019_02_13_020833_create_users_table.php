@@ -11,14 +11,12 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up() // for making changes to database
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->increments('id'); //increment the primary key in the id field
+            $table->string('email')->unique(); //create a string field called email that must be unique
+            $table->string('password')->nullable(false); //create a string field called password that cannot be equal to null
             $table->rememberToken();
             $table->timestamps();
         });
@@ -29,7 +27,7 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down() //for rolling back database changes
     {
         Schema::dropIfExists('users');
     }
